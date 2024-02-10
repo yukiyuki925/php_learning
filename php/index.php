@@ -5,6 +5,9 @@ echo('<br>');
 echo 'test';
 
 $test = 123;
-$test = 456;
+// $test = 456;
 echo $test;
+
+$run = 'dash';
+echo $run;
 ?>
