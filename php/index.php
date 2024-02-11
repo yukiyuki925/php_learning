@@ -1,18 +1,17 @@
 <?php
-$members_2 = [
-    'ホンダ' => [
-      'height' => 170,
-      'hobby' => 'サッカー'
-    ],
-    '香川' => [
-      'height' => 175,
-      'hobby' => 'ドリブル'
-    ]
-];
-
-foreach ($members_2 as $member_1){
-  foreach($member_1 as $member){
-    echo $member;
+for ($i = 1; $i < 31; $i++){
+  if ($i % 15 === 0) {
+    echo 'FizzBuzz';
+    echo "<br>";
+  } elseif ($i % 3 === 0) {
+    echo 'Fizz';
+    echo "<br>";
+  } elseif ($i % 5 === 0) {
+    echo 'Buzz';
+    echo "<br>";
+  } else {
+    echo $i;
+    echo "<br>";
   }
 }
 ?>
