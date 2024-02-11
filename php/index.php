@@ -17,9 +17,14 @@ echo('<br>');
 const max = 10;
 echo max;
 
-$array = ['あああ',2,3];
+$array2 = [
+  ['赤','青','黄'],
+  ['緑','紫','黒']
+];
 
 echo '<pre>';
-var_dump($array);
+var_dump($array2);
       '</pre>';
+
+echo $array2[1][1]
 ?>
