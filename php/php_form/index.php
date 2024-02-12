@@ -1,10 +1,10 @@
 <?php
 // スーパーグローバル変数
-// if(!empty($_POST)){
-//   echo '<pre>';
-//   var_dump($_POST);
-//   echo '</pre>';
-// }
+if(!empty($_SESSION)){
+  echo '<pre>';
+  var_dump($_SESSION);
+  echo '</pre>';
+}
 session_start();
 
 header('X-FRAME-OPTIONS:DENY');
@@ -36,6 +36,7 @@ if(!empty($_POST['btn_submit'])){
 <body>
 
   <?php if ($pageFlag === 1) : ?>
+  <?php if($_POST['csrf'] === $_SESSION['csrfToken']) :?>
   <form action="index.php" method="post">
     氏名
     <?php echo h($_POST['your_name']);?>
@@ -47,11 +48,16 @@ if(!empty($_POST['btn_submit'])){
     <input type="submit" name="btn_submit" value="送信する">
     <input type="hidden" name="your_name" value="<?php echo h($_POST['your_name']);?>">
     <input type="hidden" name="email" value="<?php echo h($_POST['email']);?>">
+    <input type="hidden" name="csrf" value="<?php echo h($_POST['csrf']);?>">
   </form>
+  <?php endif; ?>
   <?php endif; ?>
 
   <?php if ($pageFlag === 2) : ?>
+  <?php if($_POST['csrf'] === $_SESSION['csrfToken']) :?>
   送信が完了しました
+  <?php unset($_SESSION['csrfToken']); ?>
+  <?php endif; ?>
   <?php endif; ?>
 
   <?php if ($pageFlag === 0) : ?>
