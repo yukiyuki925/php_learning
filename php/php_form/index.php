@@ -5,6 +5,8 @@
 //   var_dump($_POST);
 //   echo '</pre>';
 // }
+session_start();
+
 header('X-FRAME-OPTIONS:DENY');
 
 function h($str)
@@ -53,6 +55,14 @@ if(!empty($_POST['btn_submit'])){
   <?php endif; ?>
 
   <?php if ($pageFlag === 0) : ?>
+  <?php 
+  if(!isset($_SESSION['$csrfToken'])){
+    $csrfToken = bin2hex(random_bytes(32));
+    $_SESSION['csrfToken'] = $csrfToken;
+  }
+  $token = $_SESSION['csrfToken'];
+  ?>
+
   <form action="index.php" method="post">
     氏名
     <input type="text" name="your_name" value="<?php if(!empty($_POST['your_name'])) echo h($_POST['your_name']);?>">
@@ -61,6 +71,7 @@ if(!empty($_POST['btn_submit'])){
     <input type="email" name="email" value="<?php if(!empty($_POST['email'])) echo h($_POST['email']);?>">
     <br>
     <input type="submit" name="btn_confirm" value="確認する">
+    <input type="hidden" name="csrf" value="<?php echo $token; ?>">
   </form>
   <?php endif; ?>
 
