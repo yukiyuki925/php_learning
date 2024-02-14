@@ -37,7 +37,7 @@ if(!empty($_POST['btn_submit'])){
 </head>
 
 <body>
-
+  <!-- 確認画面 -->
   <?php if ($pageFlag === 1) : ?>
   <?php if($_POST['csrf'] === $_SESSION['csrfToken']) :?>
   <form action="index.php" method="post">
@@ -81,7 +81,7 @@ if(!empty($_POST['btn_submit'])){
   </form>
   <?php endif; ?>
   <?php endif; ?>
-
+  <!-- 送信完了画面 -->
   <?php if ($pageFlag === 2) : ?>
   <?php if($_POST['csrf'] === $_SESSION['csrfToken']) :?>
   送信が完了しました
@@ -89,6 +89,7 @@ if(!empty($_POST['btn_submit'])){
   <?php endif; ?>
   <?php endif; ?>
 
+  <!-- 初期入力画面 -->
   <?php if ($pageFlag === 0) : ?>
   <?php 
   if(!isset($_SESSION['$csrfToken'])){
