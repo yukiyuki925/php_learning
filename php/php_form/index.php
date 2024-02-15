@@ -109,6 +109,7 @@ if(!empty($_POST['btn_submit'])){
   <?php echo '</ul>' ;?>
   <?php endif ;?>
 
+  <!-- フォーム -->
   <form action="index.php" method="post">
     氏名
     <input type="text" name="your_name" value="<?php if(!empty($_POST['your_name'])) echo h($_POST['your_name']);?>">
