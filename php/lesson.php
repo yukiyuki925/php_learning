@@ -8,27 +8,12 @@
 </head>
 
 <body>
-  <?php echo "\"php\"を勉強中です";
-  echo '<br>'
-  ?>
   <?php 
-  $sum = 100 + 1050 + 200;
-  echo $sum;
-  echo '<br>';
-  ?>
-  <p>合計金額は<?php echo $sum; ?>円です</p>
-  <p>税込金額は<?php echo $sum * 1.1; ?>円です</p>
-  <?php 
-  $today = new Datetime();
-  echo '現在は' . $today->format('G時 i分 s秒') . 'です';
-  echo '<br>'
-  ?>
-
-  <?php 
-  for ($i = 1; $i < 31; $i++) {
-    $unko =  $i / 2;
-    echo $unko . "<br>";
-  }
+  $week_name = ['日','月','火','水','木','金','土'];
+  
+  date_default_timezone_set('Asia/Tokyo');
+  $week = date('w');
+  echo $week_name[$week];
   ?>
 </body>
 
